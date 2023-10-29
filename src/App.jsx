@@ -10,10 +10,24 @@ import Steps from "./components/steps";
 
 //Hooks
 import {useForm} from "./hooks/useForm"
+import { useState } from "react";
+
+const formTemplate = {
+  name: "",
+  email: "",
+  review: "",
+  comment: "",
+};
 
 function App() {
+  const [data,setData] = useState(formTemplate)
 
-  const formComponents = [<UserForm/>,<ReviewForm/>,<Thanks/>];
+  const updateFieldHandler = (key, value) =>{
+    setData((prev)=>{
+      return {...prev, [key]:value};
+    })
+  }
+  const formComponents = [<UserForm data= {data} updateFieldHandler={updateFieldHandler}/>,<ReviewForm data={data} updateFieldHandler={updateFieldHandler}/>,<Thanks data={data} updateFieldHandler={updateFieldHandler}/>];
   // apos a criaçao do array vamos iniciar o hook
 
   const {currentStep,currentComponent,changeStep,isLastStep,isFirstStep} = useForm(formComponents)
