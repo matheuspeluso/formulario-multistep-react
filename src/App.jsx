@@ -6,11 +6,11 @@ import './App.css'
 import UserForm from "./components/UserForm";
 import ReviewForm from "./components/ReviewForm";
 import Thanks from "./components/Thanks";
-import Steps from "./components/steps";
 
 //Hooks
 import {useForm} from "./hooks/useForm"
 import { useState } from "react";
+import Steps from "./components/Steps";
 
 const formTemplate = {
   name: "",
